@@ -1,20 +1,20 @@
 from typing import List
-import datetime
+from datetime import date
 
 class Person():
-    def __init__(self, firstName: str, lastName: str, birth: datetime) -> None:
-        self.firstName: str         = firstName
-        self.lastName: str          = lastName
-        self.fullName: str          = f'{self.firstName} {self.lastName}'
-        self.birthDate: datetime    = birth
-        self.parents: List[Person]  = []
-        self.children: List[Person] = []
-        self.conjoint: Person       = None
+    def __init__(self, firstName: str, lastName: str, birth: date) -> None:
+        self.firstName: str             = firstName
+        self.lastName: str              = lastName
+        self.fullName: str              = f'{self.firstName} {self.lastName}'
+        self.birthDate: date            = birth
+        self.parents: List[Person]      = []
+        self.children: List[Person]     = []
+        self.conjoint: Person or None   = None
 
     def __str__(self) -> str:
         return self.fullName
 
-    def __add__(self, other) -> None:
+    def __add__(self, other):
         assert type(self) == type(other)
         self.children.append(other)
         other.parents.append(self)
